@@ -1,0 +1,15 @@
+<%- include('../shared/header') %>
+<h2>Catégories</h2>
+<p><a class="btn" href="/categories/new">+ Nouvelle</a></p>
+<table><thead><tr><th>ID</th><th>Nom</th><th>Actions</th></tr></thead><tbody>
+<% categories.forEach(c => { %>
+<tr>
+  <td><%= c.id %></td><td><%= c.name %></td>
+  <td>
+    <a href="/categories/<%= c.id %>/edit">éditer</a>
+    <form action="/categories/<%= c.id %>?_method=DELETE" method="post" style="display:inline"><button>supprimer</button></form>
+  </td>
+</tr>
+<% }) %>
+</tbody></table>
+<%- include('../shared/footer') %>

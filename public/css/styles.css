@@ -1,0 +1,9 @@
+*{box-sizing:border-box}body{font-family:system-ui,Segoe UI,Roboto,Arial,sans-serif;max-width:980px;margin:20px auto;padding:0 12px}
+header{display:flex;gap:16px;align-items:center;justify-content:space-between;margin-bottom:24px}
+nav a{margin-right:10px}
+table{width:100%;border-collapse:collapse;margin:12px 0}
+th,td{border:1px solid #ddd;padding:8px;text-align:left}
+.card{display:grid;gap:8px;max-width:540px;padding:16px;border:1px solid #ddd;border-radius:8px}
+input,textarea,select,button{padding:8px}
+.btn{display:inline-block;padding:8px 12px;border:1px solid #333;border-radius:6px;text-decoration:none}
+footer{margin-top:40px;color:#666}

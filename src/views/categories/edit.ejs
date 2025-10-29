@@ -1,0 +1,7 @@
+<%- include('../shared/header') %>
+<h2>Éditer catégorie #<%= category.id %></h2>
+<form action="/categories/<%= category.id %>?_method=PUT" method="post" class="card">
+  <label>Nom <input name="name" value="<%= category.name %>" required></label>
+  <button>Enregistrer</button>
+</form>
+<%- include('../shared/footer') %>
