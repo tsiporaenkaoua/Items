@@ -5,7 +5,7 @@ Les autres entités (**users, items, tags**) sont **à implémenter par les él�
 
 ## Démarrage
 ```bash
-cp .env.example .env  # configurez MySQL
+cp .env.example .env  # configurez MySQL 
 npm install
 npm run db:setup
 npm run db:seed

@@ -1,11 +1,12 @@
 openapi: 3.1.0
 info:
-  title: Starter TP API (un seul exemple complet: categories)
+  title: Starter TP API 
   version: "0.1.0"
 servers:
   - url: http://localhost:3000/api
 tags:
   - name: Categories
+  - name: Users
 paths:
   /categories:
     get:
@@ -58,6 +59,64 @@ paths:
     delete:
       summary: Supprime une catégorie
       tags: [Categories]
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: integer }
+      responses:
+        "204": { description: Deleted }
+  /users:
+    get:
+        summary: Liste des utilisateurs
+        tags: [Users]
+        responses:
+          "200": { description: OK }
+    post:
+      summary: Crée un utilisateur
+      tags: [Users]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties: { name: { type: string }, email : {type: string} }
+              required: [name]
+      responses:
+        "201": { description: Créé }
+  /users/{id}:
+    get:
+      summary: Détail d'un utilisateur
+      tags: [Users]
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: integer }
+      responses:
+        "200": { description: OK }
+        "404": { description: Not found }
+    put:
+      summary: Met à jour un utilisateur
+      tags: [Users]
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: integer }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties: { name: { type: string } }
+      responses:
+        "200": { description: OK }
+    delete:
+      summary: Supprime un utilisateur
+      tags: [Users]
       parameters:
         - name: id
           in: path

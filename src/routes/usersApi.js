@@ -1,0 +1,9 @@
+const express = require('express');
+const c = require('../controllers/usersController');
+const r = express.Router(); // contient ttes nos routes 
+r.get('/', c.apiList);
+r.get('/:id', c.apiGet);
+r.post('/', c.apiCreate);
+r.put('/:id', c.apiUpdate);
+r.delete('/:id', c.apiDelete);
+module.exports = r;

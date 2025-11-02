@@ -1,6 +1,6 @@
 const express = require('express');
 const path = require('path');
-const bodyParser = require('body-parser');
+const bodyParser = require('body-parser')//lire le corps de http
 const methodOverride = require('method-override');
 const swaggerUi = require('swagger-ui-express');
 const YAML = require('yamljs');
@@ -8,7 +8,7 @@ const YAML = require('yamljs');
 const apiRoutes = require('./routes/apiRoutes');
 const webRoutes = require('./routes/webRoutes');
 
-const app = express();
+const app = express(); //init du framework express
 
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
