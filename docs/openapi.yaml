@@ -7,6 +7,7 @@ servers:
 tags:
   - name: Categories
   - name: Users
+  - name: Tags
 paths:
   /categories:
     get:
@@ -124,3 +125,62 @@ paths:
           schema: { type: integer }
       responses:
         "204": { description: Deleted }
+  /tags:
+    get:
+        summary: Liste des tags
+        tags: [Tags]
+        responses:
+          "200": { description: OK }
+    post:
+      summary: Crée un tag
+      tags: [Tags]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties: { name: { type: string } }
+              required: [name]
+      responses:
+        "201": { description: Créé }
+  /tags/{id}:
+    get:
+      summary: Détail d'un tag
+      tags: [Tags]
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: integer }
+      responses:
+        "200": { description: OK }
+        "404": { description: Not found }
+    put:
+      summary: Met à jour un tag
+      tags: [Tags]
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: integer }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties: { name: { type: string } }
+      responses:
+        "200": { description: OK }
+    delete:
+      summary: Supprime un tag
+      tags: [Tags]
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: integer }
+      responses:
+        "204": { description: Deleted }
+        

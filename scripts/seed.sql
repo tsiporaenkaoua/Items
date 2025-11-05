@@ -5,3 +5,7 @@ ON DUPLICATE KEY UPDATE name=VALUES(name);
 INSERT INTO users (name,email) VALUES
 ('Tsipora','tsipo@gmail.com'), ('essai','essai@essai.com')
 ON DUPLICATE KEY UPDATE email=VALUES(email); 
+
+INSERT INTO tags (name) VALUES
+('bleu'), ('rouge'), ('vert')
+ON DUPLICATE KEY UPDATE name=VALUES(name);

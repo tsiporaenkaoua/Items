@@ -35,9 +35,9 @@ exports.apiDelete = async (req, res) => {
 };
 
 // ---- VUES (EJS) ----
-exports.pageList = async (_req, res) => {
-  const [rows] = await pool.query('SELECT * FROM categories ORDER BY id DESC');
-  res.render('categories/index', { categories: rows });
+exports.pageList = async (_req, res) => {//ok
+  const [rows] = await pool.query('SELECT * FROM users ORDER BY id DESC');
+  res.render('users/index', { users: rows });
 };
 exports.pageNew = (_req, res) => res.render('categories/new');
 exports.pageCreate = async (req, res) => {
