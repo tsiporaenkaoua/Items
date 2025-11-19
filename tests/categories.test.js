@@ -8,7 +8,7 @@ beforeAll(async () => {
 
 afterAll(async () => { await pool.end(); });
 
-describe('Categories CRUD (exemple fourni)', () => {
+describe('Categories CRUD', () => {
   let id;
   test('POST /api/categories -> 201', async () => {
     const r = await request(app).post('/api/categories').send({ name: 'Cours' });

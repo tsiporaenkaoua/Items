@@ -32,7 +32,7 @@ exports.apiDelete = async (req, res) => {
   res.status(204).send();
 };
 
-// ---- VUES (EJS) ----
+// ---- VUES (EJS) ---- **********PAS FAIT**************************
 exports.pageList = async (_req, res) => {
   const [rows] = await pool.query('SELECT * FROM categories ORDER BY id DESC');
   res.render('categories/index', { categories: rows });

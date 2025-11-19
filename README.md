@@ -13,6 +13,8 @@ npm start
 # Formulaires: http://localhost:3000/categories
 # Swagger: http://localhost:3000/docs
 ```
+faire les test : npm run test
+
 
 ## À faire (élèves)
 - Dupliquez `categoriesController.js` vers `usersController.js`, `itemsController.js`, `tagsController.js` et adaptez SQL.
@@ -22,3 +24,8 @@ npm start
 - Mettez à jour `docs/openapi.yaml` (schemas + paths) pour users/items/tags.
 
 Bon TP ✨
+
+
+
+pOUR COMPRENDRE LE CHEMINEMENT PARTIR DEPUIS LA VUe  
+faire test tags puis cote back fini (sauf assoc) faire un git puis soccuper de lassoc et du front

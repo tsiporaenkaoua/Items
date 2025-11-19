@@ -8,6 +8,7 @@ tags:
   - name: Categories
   - name: Users
   - name: Tags
+  - name: Items
 paths:
   /categories:
     get:
@@ -176,6 +177,64 @@ paths:
     delete:
       summary: Supprime un tag
       tags: [Tags]
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: integer }
+      responses:
+        "204": { description: Deleted }
+  /items:
+    get:
+      summary: Liste des items
+      tags: [Items]
+      responses:
+        "200": { description: OK }
+    post:
+      summary: Crée un item
+      tags: [Items]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties: { title: { type: string }, description: { type: string }, status: { type: string, enum: ['DRAFT','ACTIVE','ARCHIVED']}, user_id: { type: integer }  , category_id: { type: integer } }
+              required: [title]
+      responses:
+        "201": { description: Créé }
+  /items/{id}:
+    get:
+      summary: Détail d'un item
+      tags: [Items]
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: integer }
+      responses:
+        "200": { description: OK }
+        "404": { description: Not found }
+    put:
+      summary: Met à jour un item
+      tags: [Items]
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: integer }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties: { title: { type: string }, description: { type: string }, status: { type: string, enum: ['DRAFT','ACTIVE','ARCHIVED']}, user_id: { type: integer }  , category_id: { type: integer } }
+      responses:
+        "200": { description: OK }
+    delete:
+      summary: Supprime un item
+      tags: [Items]
       parameters:
         - name: id
           in: path

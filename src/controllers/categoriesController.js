@@ -40,14 +40,15 @@ exports.pageList = async (_req, res) => {
 exports.pageNew = (_req, res) => res.render('categories/new');
 exports.pageCreate = async (req, res) => {
   const { name } = req.body;
+  console.log(req.body.name);
   await pool.query('INSERT INTO categories (name) VALUES (?)', [name]);
-  res.redirect('/categories');
+  res.redirect('/categories'); //va au niv de la route cat et recharge la page - redirection coté serveur
 };
 exports.pageEdit = async (req, res) => {
   const id = Number(req.params.id);
   const [rows] = await pool.query('SELECT * FROM categories WHERE id=?', [id]);
   if (!rows.length) return res.status(404).send('Category not found');
-  res.render('categories/edit', { category: rows[0] });
+  res.render('categories/edit', { category: rows[0] }); //renvoit la page html - redirection coté client
 };
 exports.pageUpdate = async (req, res) => {
   const id = Number(req.params.id);

@@ -1,0 +1,13 @@
+<%- include('../shared/header') %>
+<h2>User</h2>
+
+<table><thead><tr><th>ID</th><th>Nom</th><th>Actions</th></tr></thead><tbody>
+<% users.forEach(c => { %>
+<tr>
+  <td><%= c.id %></td><td><%= c.name %></td>
+  <td>
+    </td>
+</tr>
+<% }) %>
+</tbody></table>
+<%- include('../shared/footer') %>

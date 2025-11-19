@@ -15,6 +15,7 @@ exports.apiGet = async (req, res) => {
 };
 exports.apiCreate = async (req, res) => { 
   const { name, email } = req.body;
+  //console.log(req.body);
   if (!name || !name.trim() || !email || !email.trim()) return res.status(400).json({ message: 'name and email required' });
   const [r] = await pool.query('INSERT INTO users (name,email) VALUES (?,?)', [name, email]);
   const [rows] = await pool.query('SELECT * FROM users WHERE id=?', [r.insertId]);
@@ -35,30 +36,31 @@ exports.apiDelete = async (req, res) => {
 };
 
 // ---- VUES (EJS) ----
-exports.pageList = async (_req, res) => {//ok
+exports.pageList = async (_req, res) => {
   const [rows] = await pool.query('SELECT * FROM users ORDER BY id DESC');
   res.render('users/index', { users: rows });
 };
-exports.pageNew = (_req, res) => res.render('categories/new');
+exports.pageNew = (_req, res) => res.render('users/new');
 exports.pageCreate = async (req, res) => {
   const { name } = req.body;
-  await pool.query('INSERT INTO categories (name) VALUES (?)', [name]);
-  res.redirect('/categories');
+  const { email } = req.body;
+  await pool.query('INSERT INTO users (name,email) VALUES (?, ?)', [name, email]);
+  res.redirect('/users');
 };
 exports.pageEdit = async (req, res) => {
   const id = Number(req.params.id);
-  const [rows] = await pool.query('SELECT * FROM categories WHERE id=?', [id]);
-  if (!rows.length) return res.status(404).send('Category not found');
-  res.render('categories/edit', { category: rows[0] });
+  const [rows] = await pool.query('SELECT * FROM users WHERE id=?', [id]);
+  if (!rows.length) return res.status(404).send('User not found');
+  res.render('users/edit', { category: rows[0] });
 };
 exports.pageUpdate = async (req, res) => {
   const id = Number(req.params.id);
   const { name } = req.body;
-  await pool.query('UPDATE categories SET name=? WHERE id=?', [name, id]);
-  res.redirect('/categories');
+  await pool.query('UPDATE users SET name=? WHERE id=?', [name, id]);
+  res.redirect('/users');
 };
 exports.pageDelete = async (req, res) => {
   const id = Number(req.params.id);
-  await pool.query('DELETE FROM categories WHERE id=?', [id]);
-  res.redirect('/categories');
+  await pool.query('DELETE FROM users WHERE id=?', [id]);
+  res.redirect('/users');
 };
