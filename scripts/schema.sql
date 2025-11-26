@@ -1,17 +1,17 @@
--- Users (à implémenter par les élèves)
+-- Users 
 CREATE TABLE IF NOT EXISTS users (
   id INT AUTO_INCREMENT PRIMARY KEY,
   name VARCHAR(100) NOT NULL,
   email VARCHAR(255) NOT NULL UNIQUE
 );
 
--- Categories (exemple COMPLET fourni)
+-- Categories 
 CREATE TABLE IF NOT EXISTS categories (
   id INT AUTO_INCREMENT PRIMARY KEY,
   name VARCHAR(100) NOT NULL UNIQUE
 );
 
--- Items (à implémenter par les élèves)
+-- Items 
 CREATE TABLE IF NOT EXISTS items (
   id INT AUTO_INCREMENT PRIMARY KEY,
   title VARCHAR(255) NOT NULL,
@@ -23,13 +23,13 @@ CREATE TABLE IF NOT EXISTS items (
   updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
--- Tags (à implémenter par les élèves)
+-- Tags 
 CREATE TABLE IF NOT EXISTS tags (
   id INT AUTO_INCREMENT PRIMARY KEY,
   name VARCHAR(100) NOT NULL UNIQUE
 );
 
--- Pivot item_tags (à implémenter par les élèves)
+-- Pivot item_tags 
 CREATE TABLE IF NOT EXISTS item_tags (
   item_id INT NOT NULL,
   tag_id INT NOT NULL,

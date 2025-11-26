@@ -17,3 +17,6 @@ INSERT INTO items (title, description, status, user_id, category_id) VALUES
 ('Rédiger compte rendu', 'Compte rendu du TP sur les algorithmes', 'DRAFT', 1, 2),
 ('Préparer présentation', 'Présentation sur le projet final', 'ARCHIVED', 2, 3)
 ON DUPLICATE KEY UPDATE title=VALUES(title);
+
+INSERT INTO item_tags (item_id, tag_id) VALUES
+(2,3), (2,4);

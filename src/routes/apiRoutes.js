@@ -7,6 +7,7 @@ const categories = require('./categoriesApi');
 const users = require('./usersApi');
 const items = require('./itemsApi');
 const tags = require('./tagsApi');
+const item_tags = require('./item_tagsApi');
 const router = express.Router();
 
 router.get('/health', (_req, res) => res.json({ status: 'ok' }));
@@ -15,5 +16,6 @@ router.use('/categories', categories);// ici Express va préfixer toutes les rou
 router.use('/users', users);
 router.use('/items', items);
 router.use('/tags', tags);
+router.use('/item_tags', item_tags);
 
 module.exports = router;

@@ -13,7 +13,7 @@ describe('Categories CRUD', () => {
   test('POST /api/categories -> 201', async () => {
     const r = await request(app).post('/api/categories').send({ name: 'Cours' });
     expect(r.status).toBe(201);
-    id = r.body.id;
+    id = r.body.id; //sert à stocker l’id pour pouvoir l’utiliser dans les tests suivants.
   });
   test('GET /api/categories -> 200', async () => {
     const r = await request(app).get('/api/categories');
